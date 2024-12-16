@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:13
+    environment:
+      POSTGRES_DB: db
+      POSTGRES_USER: abdulatipov
+      POSTGRES_PASSWORD: gusen12345
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  bot:
+    build: .
+    depends_on:
+      - db
+    environment:
+      TELEGRAM_TOKEN: 7985696955:AAHJc62xNSBITmJoNBXmlHk0VeZdy7rmBJ4
+
+volumes:
+  postgres_data:
